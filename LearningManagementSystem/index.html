@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Canvas LMS Home</title>
+    </head>
+
+    <body>
+        <!-- <h1>Classes</h1>
+        <a name="classes"></a>
+        <a href="#assignments"></a> -->
+
+        <!-- <p>Period 1: Biology 1A<br>
+            Period 2: Chemistry<br>
+            Period 3: Prep Period<br>
+            Period 4: Physics<br>
+            Period 5: Environmental Science<br>
+            Period 6: Anatomy and Physiology<br>
+            Period 7: Biology 7B<br>
+            Period 8: AP Research<br>
+        </p> -->
+
+        <h1>Enter Grades</h1>
+        <a name="assignments"></a>
+        <p>Choose which assignment</p>
+
+        <form>
+            <!-- Class -->
+            <label for="class">Choose Class:</label>
+            <select id="class" name="class" onchange="updateOptions()">
+                <option value="bio1a">Biology 1A</option>
+                <option value="chem" selected>Chemistry</option>
+            </select>
+
+            <br>
+
+            <!-- Student Name -->
+            <label for="name">Choose Student Name:</label>
+            <!-- Options will be dynamically populated based on class selection -->
+            <select id="name" name="name"></select>
+
+            <br>
+
+            <!-- Assignment -->
+            <label for="assignment">Select an assignment:</label>
+            <!-- Options will be dynamically populated based on class selection -->
+            <select id="assignment" name="assignment"></select>
+
+            <br>
+
+            <!-- Assignment -->
+            <label for="type">Select assignment type:</label>
+            <select id="type" name="type">
+                <option value="major">Major</option>
+                <option value="minor" selected>Minor</option>
+            </select>
+
+            <br>
+
+            <!-- Grade -->
+            <label for="grade">Enter Grade:</label>
+            <input type="number" id="grade" name="grade" min="0" max="100">
+
+            <br>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+
+        <table id="dataTable">
+            <tr>
+                <th>Class</th>
+                <th>Student</th>
+                <th>Assignment</th>
+                <th>Assignment Type</th>
+                <th>Grade</th>
+            </tr>
+        </table>
+
+        <style>
+    
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+    
+            th, td {
+                border:1px solid #00000081;
+                padding: 8px;
+                text-align: center;
+            }
+    
+            th {
+                background-color: #e8e8e8;
+            }
+    
+        </style>
+
+<script>
+
+    function updateOptions() {
+        const classOptions = document.getElementById('class');
+        const studentOptions = document.getElementById('name');
+        const assignmentOptions = document.getElementById('assignment');
+
+        const chosenClass = classOptions.value;
+        console.log("Chosen Class:", chosenClass)
+
+        studentOptions.innerHTML = "";
+        assignmentOptions.innerHTML = "";
+
+        if (chosenClass === "bio1a") {
+            addOption(studentOptions, "Lisa Smith", "lisa_smith");
+            addOption(studentOptions, "Jane Lewis", "jane_Lewis");
+            addOption(assignmentOptions, "Lab Report", "lab_report");
+            addOption(assignmentOptions, "Frog Dissection", "frog_dissection");
+        }
+        else if (chosenClass === "chem") {
+            addOption(studentOptions, "Alice Johnson", "alice_johnson");
+            addOption(studentOptions, "Bob Williams", "bob_williams");
+            addOption(assignmentOptions, "Stoichiometry Worksheet", "stoich_wks");
+            addOption(assignmentOptions, "Periodic Table Quiz", "pt_quiz");
+        }
+
+        function addOption(selectElement, text, value) {
+            const option = document.createElement("option");
+            option.text = text;
+            option.value = value;
+            selectElement.add(option);
+        }
+
+
+    }
+
+    // Calling this right away so that it executes on page load
+    updateOptions();
+
+    function addRow(data){
+        console.log({data});
+        
+
+        const table = document.getElementById('dataTable');
+        
+        const rowAdd = table.insertRow();
+
+        const cell1 = rowAdd.insertCell(0);
+        const cell2 = rowAdd.insertCell(1);
+        const cell3 = rowAdd.insertCell(2);
+        const cell4 = rowAdd.insertCell(3);
+        const cell5 = rowAdd.insertCell(4);
+
+        cell1.innerHTML = data.class;
+        cell2.innerHTML = data.name;
+        cell3.innerHTML = data.assignment;
+        cell4.innerHTML = data.type;
+        cell5.innerHTML = data.grade;
+    }
+
+
+    async function populateTable() {
+        try {
+            const response = await fetch('http://localhost:3000/data');
+            const data = await response.json();
+            //console.log(typeof data);
+            const tableBody = document.getElementById('dataTable');
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                row.forEach(cell => {
+                    const td = document.createElement('td');
+                    td.textContent = cell.trim(); // Remove leading/trailing whitespace
+                    //console.log(td);
+                    tr.appendChild(td);
+                });
+                //console.log(typeof tr);
+                const la = JSON.stringify(tr);
+                tableBody.appendChild(tr);
+            });
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    populateTable();
+
+    const form = document.querySelector('form');
+    // On form submit, make POST request to submit form data
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const res = Object.fromEntries(formData);
+        const payload = JSON.stringify(res);
+        console.log("PAYLOAD:", payload);
+
+        for (item of formData) {
+            console.log('log1:', item[0], item[1]);
+        }
+        try {
+            const body = {
+                class: formData.get('class'),
+                name: formData.get('name'),
+                assignment: formData.get('assignment'),
+                grade: formData.get('grade'),
+                type: formData.get('type')
+            }
+
+            const response = await fetch('http://localhost:3000/submit-form', {
+                method: 'POST',
+                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            //console.log(response);
+            const responseData = await response.json();
+            console.log('responseData: ', responseData);
+
+            if(response.status === 200){
+                addRow(body);
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    })
+</script>
+
+    </body>
+</html>
