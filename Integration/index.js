@@ -14,11 +14,11 @@ fetch('http://localhost:3001/grades')
                     const newGradesCount = lmsGrades.length - gradebookGradeCount;
 
                     if (newGradesCount > 0) {
-                        // Make a request to the Gradebook platform's POST /grades endpoint
-                        const newGrades = lmsGrades.slice(lmsGrades.length - newGradesCount);
-
                         console.info("THERE HAVE BEEN SOME CHANGES!")
                         console.info(`I SEE ${newGradesCount} NEW GRADES!`)
+
+                        const newGrades = lmsGrades.slice(lmsGrades.length - newGradesCount);
+
                         // The GradeBook API is at port 3001
                         await fetch('http://localhost:3001/grades', {
                             method: 'POST',
