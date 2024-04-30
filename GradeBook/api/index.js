@@ -8,7 +8,8 @@ const app = express()
 app.use(cors());
 app.use(express.json());
 
-// PUBLIC: Used by the frontend to get and display grades in HTML table
+// PUBLIC: Used by the frontend to get and display grades in HTML table,
+// and also by our custom integration to check for the inital count of grades in the gradebook system.
 app.get('/grades', (req, res) => {
     const results = [];
 
@@ -27,18 +28,17 @@ app.get('/grades', (req, res) => {
 
 // PUBLIC: Used by our custom integration to post new grade updates that were found from short-polling the other frontend platform
 app.post('/grades', async (req, res) => {
-    const grades = JSON.parse(req.body);
+    const grades = req.body;
 
     for(const grade of grades) {
-        const csvRow = grade.class +','+ grade.name +',' + grade.assignment +',' + grade.type +',' + grade.grade +'\n';
-        fs.appendFile('../database/grades.csv', csvRow, (err) => {
-            if(err){
-                console.log('error branch hit');
-                res.status(500).json({err: 'Failed to save data: '+ err});
+        const csvRow = grade.join(",") + '\n';
+        fs.appendFile('./GradeBook/database/grades.csv', csvRow, (err) => {
+            if (err) {
+                console.error(err);
             }
         })
     }
-    res.json(formData);
+    res.sendStatus(200);
 })
 
 app.listen(3001)

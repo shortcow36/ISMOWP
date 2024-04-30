@@ -30,13 +30,12 @@ app.get('/grades', (req, res) => {
 app.post('/grades', async (req, res) => {
     const formData = req.body;
     const csvRow = formData.class +','+ formData.name +',' + formData.assignment +',' + formData.type +',' + formData.grade +'\n';
-    fs.appendFile('../database/grades.csv', csvRow, (err) => {
-        if(err){
-            console.log('error branch hit');
-            res.status(500).json({err: 'Failed to save data: '+ err});
+    fs.appendFile('./LearningManagementSystem/database/grades.csv', csvRow, (err) => {
+        if (err) {
+            console.error(err);
         }
     })
-    res.json(formData);
+    res.sendStatus(200);
 })
 
 app.listen(3000)

@@ -40,8 +40,8 @@
 
         <script>
             function addRow(data){
-                console.log({data});
-                
+                if (data.class === undefined) return;
+
                 const table = document.getElementById('dataTable');
                 
                 const rowAdd = table.insertRow();
