@@ -76,7 +76,7 @@ For example:
 
 ## Recording of Demonstration
 
-> Note: Jitteriness in the frontend pages reloading is due to the way our Live Server extension is configured. Whenever we push new data to either of our frontend databases, each webpage performs a hot-reload. We intentionally left this in as a trade-off so that we don't have to manually refresh the Gradebook to see our changes appear.
+> Note: Jitteriness in the frontend pages reloading is due to the way our Live Server extension is configured. Whenever we push new data to either of our frontend databases, both webpage performs a hot-reload. That's why we seem them both refresh twice for each one change we make. We intentionally left this in as a trade-off so that we don't have to manually refresh the Gradebook to see our changes appear.
 
 [click here to download recording of demonstration](./images/ismwop-demo-recording.mp4)
 
