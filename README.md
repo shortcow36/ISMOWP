@@ -59,3 +59,25 @@ For example:
 - How to collaborate with other devs in Github by opening or reviewing `pull-requests`
 - `git command-line` basics to manages changes between your local repo and your github repo: status, log, push, pull, remote, branch, checkout, add, commit
 - Exposure to the concept of `short-polling`
+
+## To Launch Demo
+
+- In vscode, install the "Live Server" extension and start it
+- In one tab, open the LearningManagementSystem (http://127.0.0.1:5500/LearningManagementSystem/), and in another tab open the GradeBook (http://127.0.0.1:5500/GradeBook/)
+- Open 3 terminal instances, and from the ISMOWP directory, launch each index.js file:
+    - `node ./LearningManagementSystem/api/index.js`
+    - `node ./Gradebook/api/index.js`
+    - `node ./integration/index.js`
+- Enter grades through the LearningManagementSystem form, and watch the logs of your integration server detect the change before pushing the new grades to the Gradebook database to keep them in-sync. Your Gradebook webpage should refresh automatically, but if it does not, perform a manual refresh to see the new grades appear.
+
+---
+---
+
+<!-- Fun fact: You can use HTML tags in a markdown file -->
+> Example of launching Frontend Servers
+
+![Example of launching Frontend Servers](./images/frontend-servers.png)
+
+> Example of launching Backend Servers
+
+![Example of launching Backend Servers](./images/backend-servers.png)
