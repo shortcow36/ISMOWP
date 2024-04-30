@@ -62,6 +62,7 @@ For example:
 
 ## To Launch Demo
 
+- Perform an `npm install` in both `./LearningManagementSystem` and in `./GradeBook` to install their dependencies
 - In vscode, install the "Live Server" extension and start it
 - In one tab, open the LearningManagementSystem (http://127.0.0.1:5500/LearningManagementSystem/), and in another tab open the GradeBook (http://127.0.0.1:5500/GradeBook/)
 - Open 3 terminal instances, and from the ISMOWP directory, launch each index.js file:
