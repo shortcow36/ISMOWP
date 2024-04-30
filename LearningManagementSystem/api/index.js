@@ -22,7 +22,7 @@ app.post('/submit-form', async (req, res) => {
     res.json(formData);
 })
 
-app.get('/data', (req, res) => {
+app.get('/grades', (req, res) => {
     const results = [];
     
     fs.createReadStream("data.csv")
