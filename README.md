@@ -73,10 +73,8 @@ For example:
 ---
 ---
 
-> Example of launching Frontend Servers
+## Recording of Demonstration
 
-![Example of launching Frontend Servers](./images/frontend-servers.png)
+> Note: Jitteriness in the frontend pages reloading is due to the way our Live Server extension is configured. Whenever we push new data to either of our frontend databases, each webpage performs a hot-reload. We intentionally left this in as a trade-off so that we don't have to manually refresh the Gradebook to see our changes appear.
 
-> Example of launching Backend Servers
-
-![Example of launching Backend Servers](./images/backend-servers.png)
+[video demonstration](./images/ismwop-demo-recording.mp4)
