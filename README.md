@@ -29,7 +29,7 @@ You'll notice in our LearningManagementSystem platform we only have two API endp
 - `GET /grades` a public endpoint available for external use to retrieve all of the submitted grades.
 - `POST /grades` a private endpoint used only by our application whenever the user makes a form sumbission through the frontend.
 
-And in our GradeBook platform, we also have a two API endpoint:
+And in our GradeBook platform, we also have a two API endpoints:
 
 - `GET /grades` a public endpoint available for external use to retrieve all of the submitted grades.
 - `POST /grades` a public endpoint which allows you to enter new grades into their system via API.
