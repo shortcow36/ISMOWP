@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const fs = require('fs');
-const csv = require('csv-parser');
 const { parse } = require("csv-parse");
 
 const app = express()
@@ -13,7 +12,7 @@ app.post('/submit-form', async (req, res) => {
     const formData = req.body;
     //console.log(formData);
     const csvRow = formData.class +','+ formData.name +',' + formData.assignment +',' + formData.type +',' + formData.grade +'\n';
-    fs.appendFile('data.csv', csvRow, (err) => {
+    fs.appendFile('../database/grades.csv', csvRow, (err) => {
         if(err){
             console.log('error branch hit');
             res.status(500).json({err: 'Failed to save data: '+ err});
@@ -22,10 +21,10 @@ app.post('/submit-form', async (req, res) => {
     res.json(formData);
 })
 
-app.get('/data', (req, res) => {
+app.get('/grades', (req, res) => {
     const results = [];
     
-    fs.createReadStream("data.csv")
+    fs.createReadStream("../database/grades.csv")
         .pipe(parse({ delimiter: ",", from_line: 2 }))
         .on("data", function (row) {
             results.push(row);
