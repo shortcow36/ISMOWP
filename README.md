@@ -73,7 +73,6 @@ For example:
 ---
 ---
 
-<!-- Fun fact: You can use HTML tags in a markdown file -->
 > Example of launching Frontend Servers
 
 ![Example of launching Frontend Servers](./images/frontend-servers.png)
