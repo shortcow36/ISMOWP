@@ -62,14 +62,14 @@ For example:
 
 ## To Launch Demo
 
-- Perform an `npm install` in both `./LearningManagementSystem` and in `./GradeBook` to install their dependencies
-- In vscode, install the "Live Server" extension and start it
-- In one tab, open the LearningManagementSystem (http://127.0.0.1:5500/LearningManagementSystem/), and in another tab open the GradeBook (http://127.0.0.1:5500/GradeBook/)
-- Open 3 terminal instances, and from the ISMOWP directory, launch each index.js file:
+1. Perform an `npm install` in both `./LearningManagementSystem` and in `./GradeBook` to install their dependencies
+2. In vscode, install the "Live Server" extension and start it
+3. In one tab, open the LearningManagementSystem (http://127.0.0.1:5500/LearningManagementSystem/), and in another tab open the GradeBook (http://127.0.0.1:5500/GradeBook/)
+4. Open 3 terminal instances, and from the ISMOWP directory, launch each index.js file:
     - `node ./LearningManagementSystem/api/index.js`
     - `node ./Gradebook/api/index.js`
     - `node ./integration/index.js`
-- Enter grades through the LearningManagementSystem form, and watch the logs of your integration server detect the change before pushing the new grades to the Gradebook database to keep them in-sync. Your Gradebook webpage should refresh automatically, but if it does not, perform a manual refresh to see the new grades appear.
+5. Enter grades through the LearningManagementSystem form, and watch the logs of your integration server detect the change before pushing the new grades to the Gradebook database to keep them in-sync. Your Gradebook webpage should refresh automatically, but if it does not, perform a manual refresh to see the new grades appear.
 
 ---
 ---
