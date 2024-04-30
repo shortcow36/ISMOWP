@@ -4,4 +4,5 @@ This frontend service emulates a secondary platform which a teacher would typica
 
 ## Public Endpoints
 
+- `GET /grades`
 - `POST /grades`

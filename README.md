@@ -24,14 +24,15 @@ Both webpages feature a table that lists all of the published grades in its syst
 
 ## API Development
 
-You'll notice in our LearningManagementSystem platform we only have 2 API endpoints:
+You'll notice in our LearningManagementSystem platform we only have two API endpoints:
 
-- `POST /grades` a private endpoint used only by our application whenever the user makes a form sumbission through the frontend.
 - `GET /grades` a public endpoint available for external use to retrieve all of the submitted grades.
+- `POST /grades` a private endpoint used only by our application whenever the user makes a form sumbission through the frontend.
 
-And in our GradeBook platform, we only have a single API endpoint:
+And in our GradeBook platform, we also have a two API endpoint:
 
-- `POST /grades` a public endpoint which allows you to enter new grades into their system via API
+- `GET /grades` a public endpoint available for external use to retrieve all of the submitted grades.
+- `POST /grades` a public endpoint which allows you to enter new grades into their system via API.
 
 In-reality, these frontend platforms will have many more endpoints available to use, but for our demonstration, we only needed to recreate a couple of them.
 
