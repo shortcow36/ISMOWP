@@ -79,8 +79,8 @@ For example:
 
 > Note: Jitteriness in the frontend pages reloading is due to the way our Live Server extension is configured. Whenever we push new data to either of our frontend databases, both webpage performs a hot-reload. That's why we see them both refresh twice each time we post a new grade -- first page refresh is when you submit form and the LMS database updates, and the second page refresh is when our integration sees that change and updates our Gradebook database to keep them in-sync. We intentionally left this in as a trade-off so that we don't have to manually refresh the Gradebook to see our changes appear.
 
-[click here to download recording of demonstration](./images/ismwop-demo-recording.mp4)
+[click here to download recording of demonstration](./assets/ismwop-demo-recording.mp4)
 
 > System Diagram
 
-![system diagram](./images/ismwop-diagram.png)
+![system diagram](./assets/ismwop-diagram.png)
