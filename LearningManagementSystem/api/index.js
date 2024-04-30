@@ -23,7 +23,7 @@ app.post('/grades', async (req, res) => {
 app.get('/grades', (req, res) => {
     const results = [];
     
-    fs.createReadStream("../database/grades.csv")
+    fs.createReadStream("./LearningManagementSystem/database/grades.csv")
         .pipe(parse({ delimiter: ",", from_line: 2 }))
         .on("data", function (row) {
             results.push(row);

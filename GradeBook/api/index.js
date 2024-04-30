@@ -10,7 +10,7 @@ app.use(express.json());
 app.post('/grades', async (req, res) => {
     const formData = req.body;
     const csvRow = formData.class +','+ formData.name +',' + formData.assignment +',' + formData.type +',' + formData.grade +'\n';
-    fs.appendFile('../database/grades.csv', csvRow, (err) => {
+    fs.appendFile('./GradeBook/database/grades.csv', csvRow, (err) => {
         if(err){
             console.log('error branch hit');
             res.status(500).json({err: 'Failed to save data: '+ err});
@@ -19,4 +19,4 @@ app.post('/grades', async (req, res) => {
     res.json(formData);
 })
 
-app.listen(3000)
+app.listen(3001)
