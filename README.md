@@ -69,7 +69,7 @@ For example:
 4. Open 3 terminal instances, and from the ISMOWP directory, launch each index.js file:
     - `node ./LearningManagementSystem/api/index.js`
     - `node ./Gradebook/api/index.js`
-    - `node ./integration/index.js`
+    - `node ./Integration/index.js`
 5. Enter grades through the LearningManagementSystem form, and watch the logs of your integration server detect the change before pushing the new grades to the Gradebook database to keep them in-sync. Your Gradebook webpage should refresh automatically, but if it does not, perform a manual refresh to see the new grades appear.
 
 ---
