@@ -1,7 +1,7 @@
 {
-  "name": "ismowp",
+  "name": "ISMOWP - GradeBook",
+  "description": "> Author: Srinitya Chirravuri",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "csv-parse": "^5.5.5",
-    "csv-parser": "^3.0.0",
-    "express": "^4.19.2",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.0"
   }
 }

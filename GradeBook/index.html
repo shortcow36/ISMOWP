@@ -7,20 +7,6 @@
     </head>
 
     <body>
-        <!-- <h1>Classes</h1>
-        <a name="classes"></a>
-        <a href="#assignments"></a> -->
-
-        <!-- <p>Period 1: Biology 1A<br>
-            Period 2: Chemistry<br>
-            Period 3: Prep Period<br>
-            Period 4: Physics<br>
-            Period 5: Environmental Science<br>
-            Period 6: Anatomy and Physiology<br>
-            Period 7: Biology 7B<br>
-            Period 8: AP Research<br>
-        </p> -->
-
         <h1>Gradebook</h1>
 
         <table id="dataTable">
@@ -104,7 +90,7 @@
             async function fetchData() {
                 //console.log('is this even working');
                 try {
-                    const response = await fetch('http://localhost:3000/submit-form');
+                    const response = await fetch('http://localhost:3000/grades');
                     const data = await response.json();
                     console.log(data);
 

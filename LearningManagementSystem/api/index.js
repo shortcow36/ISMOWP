@@ -8,9 +8,8 @@ const app = express()
 app.use(cors());
 app.use(express.json());
 
-app.post('/submit-form', async (req, res) => {
+app.post('/grades', async (req, res) => {
     const formData = req.body;
-    //console.log(formData);
     const csvRow = formData.class +','+ formData.name +',' + formData.assignment +',' + formData.type +',' + formData.grade +'\n';
     fs.appendFile('../database/grades.csv', csvRow, (err) => {
         if(err){
