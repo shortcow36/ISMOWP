@@ -34,5 +34,4 @@ fetch('http://localhost:3001/grades')
                     }
                 })
         }, 5000)
-
     })
